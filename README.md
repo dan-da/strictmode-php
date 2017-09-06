@@ -1,6 +1,6 @@
 # strictmode-php
 
-A tiny php lib to make php code more strict.
+A tiny php include to make php code more strict and catch problems sooner.
 
 This library catches all PHP notices, warnings, and errors and turns them
 into PHP exceptions.
@@ -14,10 +14,15 @@ forces the developer to write much cleaner code.
 The email alerts are useful for production environments, to notify site
 operators of any problems.
 
+strictmode.php is a single file that can be included with require_once or can be
+included via autoload when using composer.
+
 
 # Let's see an example.
 
 app code:
+
+This uses require_once(), see below for autoload example.
 
 ```
 <?php
@@ -51,6 +56,18 @@ For comparison, here is normal php output without strictmode.php
 PHP Notice:  Use of undefined constant HELLO - assumed 'HELLO' in /home/danda/dev/strictmode-php/t.php on line 7
 HELLO
 ```
+
+# including via composer / autoload
+
+```
+<?php
+require_once __DIR__  . '/../vendor/autoload.php';
+define( 'strictmode\ALERTS_MAILTO', 'yourmail@yourdomain.com' );
+\strictmode\initializer::init();
+
+// your app code...
+```
+
 
 # Configuring email alerts
 
