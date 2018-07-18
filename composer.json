@@ -7,8 +7,8 @@
         ]
     },
 
-    "require": {
-        "dan-da/tester-php": "^1.0"
+    "suggest": {
+        "dan-da/tester-php": "For running the test cases"
     },
 
     "require-dev": {
