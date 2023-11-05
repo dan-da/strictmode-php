@@ -17,15 +17,11 @@ class notice extends test_base {
         
         $code = null;
         $msg = null;
-        try {
-            echo HELLO;
-        }
-        catch( \Exception $e ) {
-            $code = $e->getCode();
-            $msg  = md5($e->getMessage());
-        }
-        $this->eq( $code, 8, 'exception code' );
-        $this->eq( $msg, md5("Use of undefined constant HELLO - assumed 'HELLO'"), 'exception message md5' );
+
+        $arr = [];
+        $v = @$arr["badkey"] ? "found" : "notfound";
+
+        $this->eq( $v, 'notfound', 'error suppression operator' );
     }
 
 }

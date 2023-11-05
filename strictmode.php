@@ -113,8 +113,11 @@ function _global_error_handler($errno, $errstr, $errfile, $errline ) {
      *  be called regardless - however you are still able to read the current value of
      *  error_reporting and act appropriately. Of particular note is that this value will
      *  be 0 if the statement that caused the error was prepended by the @ error-control operator.
+     * 
+     *  note: as of php8.0, error_reporting() returns 4437 when the
+     *  @ error-control operator is used.
      */
-    if( !error_reporting() ) {
+    if( error_reporting() == 4437 ) {
         return;
     }
 
